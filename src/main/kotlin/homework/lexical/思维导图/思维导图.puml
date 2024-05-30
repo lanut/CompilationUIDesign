@@ -1,0 +1,162 @@
+@startuml
+
+TITLE 词法分析
+
+state "开始" as Start
+state "字符迭代器迭代字符串" as CharIterator
+state "当前字符" as Character
+state "跳过" as Skip
+state "字母Token" as Letter
+state "数字Token" as Digit
+state "操作符Token" as Operator
+state "其他Token" as Other
+state "确定词法单元类型" as TokenTypeCheck
+state "输出词法单元" as TokenOutput
+state "继续读取字符" as ContinueRead
+state "结束" as End
+
+[*] --> Start
+Start -->  CharIterator
+CharIterator --> Character : 读取字符
+Character --> Skip : 空格、换行符等
+Character --> Letter : 字母
+Character --> Digit : 数字
+Character --> Operator : 操作符
+Character --> Other : 其他
+ContinueRead --> Character
+
+Letter --> TokenTypeCheck : 识别到完整Token
+Digit --> TokenTypeCheck : 识别到完整Token
+Operator --> TokenTypeCheck : 识别到完整Token
+Other --> TokenTypeCheck : 识别到完整Token
+
+TokenTypeCheck --> TokenOutput
+TokenOutput --> ContinueRead : 还有未识别字符
+TokenOutput --> End
+End --> [*]
+@enduml
+
+@startuml
+TITLE 词法分析
+start
+: 开始;
+:生成字符迭代器;
+while (是否还有未识别的字符?) is (yes)
+  :读取字符;
+  if (是空格?) is (yes) then
+    :跳过;
+  elseif (字母或下划线) is (yes) then
+    :进入标识符或关键字识别;
+  elseif (数字) is (yes)  then
+    :进入常量识别;
+  elseif (操作符) is (yes)  then
+    :进入操作符识别;
+  else (其他)
+    :其他Token;
+  endif
+'  switch (读取字符)
+'  case (是空格)
+'    :跳过;
+'  case (字母或下划线)
+'    :进入标识符或关键字识别;
+'  case (数字)
+'    :进入常量识别;
+'  case (操作符)
+'    :进入操作符识别;
+'  case (其他)
+'    :其他Token;
+'  endswitch
+  : 确定词法单元类型;
+  : 输出词法单元;
+endwhile
+: 结束;
+stop
+@enduml
+
+@startuml
+state 判断其他Token {
+  关键字: 输出到关键字Token
+  其他: 输出到标识符Token
+}
+
+[*] -> START : 进入标识符识别
+START -> IDN : 接受字母和下划线
+START -> ERROR : 其他字符
+IDN -> IDN : 接受字母、数字和下划线
+IDN --> ERROR : 其他字符
+ERROR --> 判断其他Token: 识别结束，输出Token
+判断其他Token --> [*]: 结束
+@enduml
+
+@startuml
+[*] --> S0: 开始
+S0 --> S1 : 非'0'
+S0 --> S3 : '0'
+S1 --> S1 : 数字
+S1 --> S10 : 'e' 或 'E'
+S1 --> S8 : '.'
+S1 --> End : 空白、界符或运算符
+S1 --> ERROR : 其他
+S2 --> S2 : '0'~'7'
+S2 --> End : 空白、界符或运算符
+S2 --> ERROR : 其他
+S3 --> S2 : '0'~'7'
+S3 --> S5 : 'x' 或 'X'
+S3 --> S8 : '.' 小数点
+S3 --> End : 空白、界符或运算符
+S3 --> ERROR : 其他
+S5 --> S6 : 数字 或 'a'~'f' 或 'A'~'F'
+S5 --> ERROR : 其他
+S6 --> S6 : 数字 或 'a'~'f' 或 'A'~'F'
+S6 --> End : 空白、界符或运算符
+S6 --> ERROR : 其他
+S8 --> S9 : 数字
+S8 --> ERROR : 其他
+S9 --> S9 : 数字
+S9 --> S10 : 'e' 或 'E'
+S9 --> End : 空白、界符或运算符
+S9 --> ERROR : 其他
+S10 --> S11 : '+' 或 '-'
+S10 --> S12 : 数字
+S10 --> ERROR : 其他
+S11 --> S12 : 数字
+S11 --> ERROR : 其他
+S12 --> S12 : 数字
+S12 --> End : 空白、界符或运算符
+S12 --> ERROR : 其他
+End --> [*]: 结束
+ERROR --> [*]: 结束
+@enduml
+
+@startuml
+start
+: 从字符迭代器读取字符;
+if (字符是计算符吗？) is (yes) then
+  :继续从字符迭代器读取字符;
+  if (已经读取的两个字符属于运算符吗？) is (yes) then
+    :将这两个字符看做运算符添加Token列表中;
+  else (no)
+    :迭代器回溯上一个字符;
+    :将识别的单个字符添加到Token列表;
+  endif
+endif
+: 结束识别;
+stop
+@enduml
+
+
+
+@startmindmap
+* Debian
+** Ubuntu
+*** Linux Mint
+*** Kubuntu
+*** Lubuntu
+*** KDE Neon
+** LMDE
+** SolydXK
+** SteamOS
+** Raspbian with a very long name
+*** <s>Raspmbc</s> => OSMC
+*** <s>Raspyfi</s> => Volumio
+@endmindmap

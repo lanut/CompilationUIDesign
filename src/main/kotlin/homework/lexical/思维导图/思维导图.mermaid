@@ -1,0 +1,21 @@
+graph TD;
+    Start((开始)) --> Input[输入字符流];
+    Input --> CharIterator[字符迭代器];
+    CharIterator --> |读取字符| Character[当前字符];
+    Character --> |空格、换行符等| Skip[跳过];
+    Character --> |字母| Letter[字母Token];
+    Character --> |数字| Digit[数字Token];
+    Character --> |操作符| Operator[操作符Token];
+    Character --> |其他| Other[其他Token];
+    ContinueRead ------> Character;
+
+    Letter --> |识别到完整Token| TokenTypeCheck[确定词法单元类型];
+    Digit --> |识别到完整Token| TokenTypeCheck[确定词法单元类型];
+    Operator --> |识别到完整Token| TokenTypeCheck[确定词法单元类型];
+    Other --> |识别到完整Token| TokenTypeCheck[确定词法单元类型];
+
+
+    TokenTypeCheck --> TokenOutput[输出词法单元];
+    TokenOutput --> |还有未识别字符| ContinueRead[继续读取字符];
+    TokenOutput --> End((结束));
+

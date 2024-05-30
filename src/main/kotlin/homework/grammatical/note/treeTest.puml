@@ -1,0 +1,113 @@
+@startmindmap
+<style>
+mindmapDiagram {
+  .coral {BackgroundColor #F08080}
+  .salmon {BackgroundColor #FFA07A}
+  .green {BackgroundColor #90EE90}
+  .sky-blue {BackgroundColor #87CEFA}
+  .goldenrod-yellow {BackgroundColor #FFDEAD}
+  .pink {BackgroundColor #FFB6C1}
+  .slate-gray {BackgroundColor #778899}
+  .steel-blue {BackgroundColor #B0C4DE}
+  .sea-green {BackgroundColor #20B2AA}
+  .Violet {BackgroundColor #EE82EE}
+}
+</style>
+* 根节点 <<coral>>
+** 子树1 <<salmon>>
+*** 子树2 <<green>>
+*** _ 子节点
+*** 子树3 <<goldenrod-yellow>>
+** 子树4 <<slate-gray>>
+*** 子树2 <<steel-blue>>
+*** 子节点 <<coral>>
+*** 子树3 <<sea-green>>
+***_ *
+@endmindmap
+
+@startmindmap
+title: 颜色格式示例
+<style>
+mindmapDiagram {
+  .coral {BackgroundColor #F08080}
+  .salmon {BackgroundColor #FFA07A}
+  .green {BackgroundColor #90EE90}
+  .sky-blue {BackgroundColor #87CEFA}
+  .goldenrod-yellow {BackgroundColor #FFDEAD}
+  .pink {BackgroundColor #FFB6C1}
+  .slate-gray {BackgroundColor #778899}
+  .steel-blue {BackgroundColor #B0C4DE}
+  .sea-green {BackgroundColor #20B2AA}
+  .Violet {BackgroundColor #EE82EE}
+}
+</style>
+* Colors
+** 全局声明 <<slate-gray>>
+** 声明 <<pink>>
+** Main定义 <<Violet>>
+** 定义 <<sky-blue>>
+** 函数形参列表 <<green>>
+** 复合语句 <<salmon>>
+** 语句、语句表 <<goldenrod-yellow>>
+** 局部声明 <<steel-blue>>
+** 表达式 <<coral>>
+** 初等量 <<sea-green>>
+@endmindmap
+
+@startmindmap
+title: 颜色格式示例
+<style>
+mindmapDiagram {
+  .表达式 {BackgroundColor #F08080}
+  .复合语句 {BackgroundColor #FFA07A}
+  .函数形参列表 {BackgroundColor #90EE90}
+  .定义 {BackgroundColor #87CEFA}
+  .语句 {BackgroundColor #FFDEAD}
+  .声明 {BackgroundColor #FFB6C1}
+  .全局声明 {BackgroundColor #778899}
+  .局部声明 {BackgroundColor #B0C4DE}
+  .初等量 {BackgroundColor #20B2AA}
+  .Main定义 {BackgroundColor #EE82EE}
+}
+</style>
+* Colors
+** 全局声明 <<全局声明>>
+** 声明 <<声明>>
+** Main定义 <<Main定义>>
+** 定义 <<定义>>
+** 函数形参列表 <<函数形参列表>>
+** 复合语句 <<复合语句>>
+** 语句、语句表 <<语句>>
+** 局部声明 <<局部声明>>
+** 表达式 <<表达式>>
+** 初等量 <<初等量>>
+@endmindmap
+
+@startmindmap
+* E
+** T
+*** F
+****_ id
+*** T'
+****_ ε
+** E'
+***_ +
+*** T
+**** F
+*****_ id
+**** T'
+*****_ ε
+*** E'
+****_ ε
+* root
+** node1
+*** node3
+**** node7
+**** node8
+*** node4
+**** node9
+**** node10
+** node2
+*** node5
+*** node6
+@endmindmap
