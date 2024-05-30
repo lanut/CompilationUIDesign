@@ -16,21 +16,21 @@ import androidx.compose.ui.unit.dp
 import ui.MyMenus.*
 import ui.menuIlems.*
 
-enum class MyMenus(val label: Int, val icon: ImageVector, val contentDescription: String) {
+enum class MyMenus(val icon: ImageVector, val contentDescription: String) {
     // 词法分析
-    LEXICAL_ANALYSIS(1, Icons.Filled.Settings, "词法分析"),
+    LEXICAL_ANALYSIS(Icons.Filled.Settings, "词法分析"),
 
     // 语法分析
-    SYNTAX_ANALYSIS(2, Icons.Filled.AccountTree, "语法分析"),
+    SYNTAX_ANALYSIS(Icons.Filled.AccountTree, "语法分析"),
 
     // 中间四元式代码生成
-    MIDDLE_CODE_GENERATION(3, Icons.Filled.Code, "中间代码生成"),
+    MIDDLE_CODE_GENERATION(Icons.Filled.Code, "中间代码生成"),
 
     // 批量生成结果
-    BATCH_RESULT_GENERATION(4, Icons.Filled.Api, "批量生成结果"),
+    BATCH_RESULT_GENERATION(Icons.Filled.Api, "批量生成结果"),
 
     // 四元式解释器
-    INTERPRETER(4, Icons.Filled.Translate, "四元式解释器"),
+    INTERPRETER(Icons.Filled.Translate, "四元式解释器"),
 }
 
 @Preview
@@ -61,7 +61,7 @@ fun ModalNavigationDrawerDemo() {
                     }
                     Spacer(Modifier.height(16.dp)) // 添加空间
                     // 底部信息
-                    Text("12107040137\n兰炜晨", modifier = Modifier.align(Alignment.BottomStart).padding(16.dp))
+                    Text("21级计科六班\n你的名字", modifier = Modifier.align(Alignment.BottomStart).padding(16.dp))
                 }
             }
         },
